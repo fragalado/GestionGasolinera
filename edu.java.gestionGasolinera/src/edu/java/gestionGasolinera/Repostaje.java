@@ -131,8 +131,48 @@ public class Repostaje {
 	/**
 	 * REPOSTAJE FACTURA: se guarda la fecha, los litros, el importe, el DNI del cliente y la matrícula del vehículo.
 	 */
-	public void repostajeFactura() {
+	public List<Repostaje> repostajeFactura(List<Repostaje> listaBD) {
 		
+		// Declaramos las variables que vamos a utilizar
+		LocalDate entradaFecha;
+		float entradaLitros, entradaImporte, eurosLitroGasolina;
+		String entradaDNI, entradaMatricula;
+		
+		// Scanner para preguntar los datos al usuario
+		Scanner entradaDatos  = new Scanner(System.in);
+		
+		// Pedimos los datos
+		// Empezamos pidiendo el DNI
+		System.out.println("Introduzca su DNI:");
+		entradaDNI = entradaDatos.next();
+		
+		// Pedimos la matrícula ahora
+		System.out.println("Introduzca su matrícula del coche:");
+		entradaMatricula = entradaDatos.next();
+		
+		// Pedimos la fecha
+		System.out.println("Introduzca la fecha del repostaje:");
+		entradaFecha = LocalDate.parse(entradaDatos.next());
+		
+		// Pedimos el importe a echar de gasolina y después calculamos cuántos litros serían
+		System.out.println("Importe para el repostaje:");
+		entradaImporte = entradaDatos.nextFloat();
+		
+		// Calculamos ahora los litros que serían
+		eurosLitroGasolina = 1.65f;
+		entradaLitros = entradaImporte / eurosLitroGasolina;
+		
+		// Creamos el objeto de tipo Repostaje para asignarle los valores
+		Repostaje aux = new Repostaje();
+		aux.setFecha(entradaFecha);
+		aux.setLitros(Math.round(entradaLitros*10.0)/10f);
+		aux.setImporte(Math.round(entradaImporte*100.0)/100f);
+		aux.setDni(entradaDNI);
+		aux.setMatricula(entradaMatricula);
+		
+		// Devolvemos la lista con el nuevo objeto Repostaje
+		listaBD.add(aux);
+		return listaBD;
 	}
 	
 	/**
@@ -145,7 +185,7 @@ public class Repostaje {
 		// Vamos a mostrar todos los repostajes de la base de datos
 		for (Repostaje aux : listaBD) {
 			System.out.println("[Fecha Repostaje=" + aux.getFecha() + "; Litros=" + aux.getLitros() + "; Importe=" + aux.getImporte() + 
-					"; Dni=" + aux.getDni() + "; Matricula=" + aux.getMatricula() + "]");
+					"; Dni=\"" + aux.getDni() + "\"; Matricula=\"" + aux.getMatricula() + "\"]");
 		}
 	}
 	

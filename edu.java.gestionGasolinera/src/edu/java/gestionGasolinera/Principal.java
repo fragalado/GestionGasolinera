@@ -36,6 +36,7 @@ public class Principal {
 
 			case 2:
 				// REPOSTAJE FACTURA
+				listaBD = repos.repostajeFactura(listaBD);
 				break;
 			
 			case 3:
