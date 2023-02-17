@@ -1,4 +1,4 @@
-package edu.java.gestionGasolinera;
+package aplicacion.entidades;
 
 import java.time.LocalDate;
 import java.util.List;

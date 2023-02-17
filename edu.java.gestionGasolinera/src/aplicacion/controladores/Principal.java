@@ -1,8 +1,10 @@
-package edu.java.gestionGasolinera;
+package aplicacion.controladores;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import aplicacion.entidades.Repostaje;
 
 public class Principal {
 
