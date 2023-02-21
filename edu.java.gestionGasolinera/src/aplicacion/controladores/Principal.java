@@ -5,14 +5,19 @@ import java.util.List;
 import java.util.Scanner;
 
 import aplicacion.entidades.Repostaje;
+import aplicacion.servicios.ImplPrincipal;
+import aplicacion.servicios.ImplRepostaje;
+import aplicacion.servicios.InterfazPrincipal;
+import aplicacion.servicios.InterfazRepostaje;
 
 public class Principal {
 
 	public static void main(String[] args) {
 		// Clase Principal, aquí haremos las llamadas a las clases y métodos
 		
-		// Creamos un objeto de tipo Repostaje
-		Repostaje repos  = new Repostaje();
+		// Inicializamos la interfaz de repostaje y principal
+		InterfazRepostaje repos  = new ImplRepostaje();
+		InterfazPrincipal intP = new ImplPrincipal();
 		// Creamos una lista que contendrá objetos de tipo Repostaje (Nuestra base de datos)
 		List<Repostaje> listaBD = new ArrayList<>();
 		
@@ -22,7 +27,7 @@ public class Principal {
 		int opcion;
 		do {
 			// Mostramos el menu
-			mostrarMenu();
+			intP.mostrarMenu();
 			
 			// Pedimos la opción y la guardamos
 			System.out.println("Introduzca la opción deseada:");
@@ -50,13 +55,6 @@ public class Principal {
 		
 		// Cerramos la variable Scanner
 		entradaOpcion.close();
-	}
-	
-	private static void mostrarMenu() {
-		System.out.println("1. Repostaje Normal");
-		System.out.println("2. Repostaje Factura");
-		System.out.println("3. Ver todos los repostajes");
-		System.out.println("4. Salir");
 	}
 
 }
